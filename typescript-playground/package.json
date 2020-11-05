@@ -1,0 +1,17 @@
+{
+  "name": "typescript-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && node main.js",
+    "build": "tsc",
+    "version": "tsc --version"
+  },
+  "author": "Johannes Hoppe",
+  "license": "none",
+  "dependencies": {
+    "typescript": "^4.0.5"
+  }
+}
