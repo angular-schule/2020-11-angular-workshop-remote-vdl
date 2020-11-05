@@ -17,6 +17,8 @@ Die gesamte Installation wird rund 30 Minuten dauern.
 1. **Node.js 12** oder höher: [https://nodejs.org](https://nodejs.org)
    + Mac-Benutzer bitte Homebrew verwenden! ([siehe Anleitung](https://presentations.angular.schule/HOMEBREW_NODE))
 2. **Google Chrome:** [https://www.google.com/chrome/](https://www.google.com/chrome/)
+   + **[Angular Augury](https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd)** (Chrome Extension)
+   + **[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)** (Chrome Extension)
 4. **Visual Studio Code:** [https://code.visualstudio.com](https://code.visualstudio.com)
    + [Angular-Schule: Extension Pack](https://marketplace.visualstudio.com/items?itemName=angular-schule.angular-schule-extension-pack)  (Visual Studio Code Extension)
 5. optional: **Git** (und ggf. ein grafischer Client wie SourceTree oder GitExtensions)
