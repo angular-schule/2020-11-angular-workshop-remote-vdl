@@ -14,12 +14,11 @@
       {{ book.description }}
     </p>
 
-    <!-- ACHTUNG: schlechter Code
-    1. Logik im Template
-    2. Immutability ignoriert
-    -->
-    <button (click)="book.rating = book.rating - 1" class="btn btn-secondary mr-2">-</button>
-    <button (click)="book.rating = book.rating + 1" class="btn btn-primary">+</button>
+    <button (click)="doRateDown()"
+      class="btn btn-secondary mr-2">-</button>
+
+    <button (click)="doRateUp()"
+      class="btn btn-primary">+</button>
 
   </div>
 </div>
