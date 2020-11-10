@@ -1,6 +1,8 @@
 <!-- <br-my class="bg-success float-right"> -->
 
-<br-create-book></br-create-book>
+<br-create-book
+  (create)="addBook($event)"
+></br-create-book>
 
 <br-book
   *ngFor="let b of books"

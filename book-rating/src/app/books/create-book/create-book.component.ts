@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'br-create-book',
@@ -7,6 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-book.component.scss']
 })
 export class CreateBookComponent {
+
+  @Output()
+  create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
     isbn: new FormControl('', [
@@ -37,13 +41,7 @@ export class CreateBookComponent {
       rating: 1
     };
 
-    // TODO:
-    // 1. erstelle einene EventEmitter mit dem Namen 'create'
-    // 2. sende das create Event mit dem neuen Buch
-    // 3. subscribe auf das Event
-    // 4. füge das neue Buch zum Book-Array hinzu
-
-
+    this.create.emit(newBook);
     this.bookForm.reset();
 
   }
