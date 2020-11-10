@@ -1,11 +1,13 @@
 <!-- <br-my class="bg-success float-right"> -->
 
-  <br-book
-    *ngFor="let b of books"
-    (rateDown)="doRateDown($event)"
-    (rateUp)="doRateUp($event)"
-    [book]="b">
-  </br-book>
+<br-create-book></br-create-book>
+
+<br-book
+  *ngFor="let b of books"
+  (rateDown)="doRateDown($event)"
+  (rateUp)="doRateUp($event)"
+  [book]="b">
+</br-book>
 
 <!-- </br-my> -->
 

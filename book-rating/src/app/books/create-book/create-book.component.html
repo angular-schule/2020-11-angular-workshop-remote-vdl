@@ -1,0 +1,26 @@
+<form [formGroup]="bookForm">
+
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input placeholder="eg. 000" formControlName="isbn" type="text" class="form-control" id="isbn">
+
+    <div *ngIf="isInvalid('isbn')" class="feedback-error">
+      Error: Please enter a valid ISBN! (3 chars)
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input placeholder="eg. Angular" formControlName="title" type="text" class="form-control" id="title">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea placeholder="eg. great Book" formControlName="description" class="form-control" id="description"></textarea>
+  </div>
+
+  <button
+    class="btn btn-primary mb-4"
+    type="submit">Create</button>
+
+</form>
