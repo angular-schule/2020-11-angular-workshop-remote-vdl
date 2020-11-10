@@ -30,4 +30,22 @@ export class CreateBookComponent {
     return false; // TODO
   }
 
+  submitForm(): void {
+
+    const newBook = {
+      ...this.bookForm.value,
+      rating: 1
+    };
+
+    // TODO:
+    // 1. erstelle einene EventEmitter mit dem Namen 'create'
+    // 2. sende das create Event mit dem neuen Buch
+    // 3. subscribe auf das Event
+    // 4. füge das neue Buch zum Book-Array hinzu
+
+
+    this.bookForm.reset();
+
+  }
+
 }
