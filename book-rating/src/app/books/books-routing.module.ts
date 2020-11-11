@@ -4,9 +4,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: DashboardComponent  },
   { path: ':isbn', component: BookDetailsComponent },
-  { path: '**', redirectTo: 'books' }
 ];
 
 @NgModule({
