@@ -24,24 +24,22 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     const observer = {
       next:  e => console.log(e),
       error: err => console.log('ERROR', err),
-      complete: () => console.log('COMPLETE')
+      // complete: () => console.log('COMPLETE')
     };
 
     // const observable = of('😀', '😎', '😈');
 
-    const observable = new Observable(obs => {
-      obs.next('🤢');
-      // obs.error('42');
-      setTimeout(() => obs.next('2 Sekunden'), 2000);
-      const x = setTimeout(() => { obs.next('3 Sekunden'); console.log('Ich bin ein Zombie'); }, 3000);
-
-      return () => {
-        clearTimeout(x);
-      };
+    // 3. Baustein: Observable
+    const observable = new Observable(subscriber => {
+      subscriber.next('🤢');
+      setTimeout(() => subscriber.next('2 Sekunden'), 2000);
+      setTimeout(() => subscriber.next('2,5 Sekunden'), 2500);
+      setTimeout(() => subscriber.complete(), 3000);
+      setTimeout(() => subscriber.next('4 Sekunden'), 4000);
     });
     const sub = observable.subscribe(observer);
 
-    setTimeout(() => sub.unsubscribe(), 2000);
+    // setTimeout(() => sub.unsubscribe(), 2000);
 
   }
 
