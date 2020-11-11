@@ -20,7 +20,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     //////// ----
 
     // 1. multipliziere alle Werte mit 10
-    // 2. filtere alle Daten aus, die kleiner sind als 30 (--> 40, 50, 60, ..., 100)
+    // 2. filtere alle Daten aus, die kleiner sind als 40 (--> 40, 50, 60, ..., 100)
     // 3. Bilde die Summe aus allen Zahlen
     // 4. (optional) Zeige so viele ❤️ an, wie die Summe groß ist
     of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
