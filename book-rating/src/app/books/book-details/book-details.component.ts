@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { filter, map, reduce, repeat } from 'rxjs/operators';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-book-details',
@@ -10,25 +11,16 @@ import { filter, map, reduce, repeat } from 'rxjs/operators';
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
 
-  isbn: string;
+  isbn$ = this.route.paramMap.pipe(
+    map(paraMap => paraMap.get('isbn')),
+    map(isbn => this.bs.getSingleBook(isbn))
+  );
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private bs: BookStoreService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => this.isbn = paramMap.get('isbn'));
-
-    //////// ----
-
-    // 1. multipliziere alle Werte mit 10
-    // 2. filtere alle Daten aus, die kleiner sind als 40 (--> 40, 50, 60, ..., 100)
-    // 3. Bilde die Summe aus allen Zahlen
-    // 4. (optional) Zeige so viele 🐸 an, wie die Summe groß ist
-    of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
-      map(x => x * 10),
-      filter(x => x >= 40),
-      reduce((x, z) => x + z),
-      map(zahl => '🐸'.repeat(zahl))
-    ).subscribe(console.log);
+    this.isbn$.subscribe(obs$ =>
+      obs$.subscribe(console.log));
 
   }
 
