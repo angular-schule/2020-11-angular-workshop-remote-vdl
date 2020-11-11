@@ -8,11 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookDetailsComponent implements OnInit {
 
+  isbn: string;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const isbn = this.route.snapshot.paramMap.get('isbn');
-    console.log(isbn);
+    this.route.paramMap.subscribe(
+      paramMap => this.isbn = paramMap.get('isbn'));
   }
 
 }
