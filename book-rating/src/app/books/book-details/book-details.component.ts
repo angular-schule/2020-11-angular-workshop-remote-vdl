@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -15,6 +16,15 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       paramMap => this.isbn = paramMap.get('isbn'));
+
+
+    //// ---- RxJS playground
+
+    of('😀', '😎', '😈').subscribe(
+      e => console.log(e),
+      err => console.log('ERROR', err),
+      () => console.log('COMPLETE')
+      );
   }
 
 }
