@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subject, Subscription, timer } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -15,31 +15,17 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      paramMap => this.isbn = paramMap.get('isbn'));
+    this.route.paramMap.subscribe(paramMap => this.isbn = paramMap.get('isbn'));
 
+    //////// ----
 
-    //// ---- RxJS playground
-
-    const observer = {
-      next:  e => console.log(e),
-      error: err => console.log('ERROR', err),
-      // complete: () => console.log('COMPLETE')
-    };
-
-    // const observable = of('😀', '😎', '😈');
-
-    // 3. Baustein: Observable
-    const observable = new Observable(subscriber => {
-      subscriber.next('🤢');
-      setTimeout(() => subscriber.next('2 Sekunden'), 2000);
-      setTimeout(() => subscriber.next('2,5 Sekunden'), 2500);
-      setTimeout(() => subscriber.complete(), 3000);
-      setTimeout(() => subscriber.next('4 Sekunden'), 4000);
-    });
-    const sub = observable.subscribe(observer);
-
-    // setTimeout(() => sub.unsubscribe(), 2000);
+    // 1. multipliziere alle Werte mit 10
+    // 2. filtere alle Daten aus, die kleiner sind als 30 (--> 40, 50, 60, ..., 100)
+    // 3. Bilde die Summe aus allen Zahlen
+    // 4. (optional) Zeige so viele ❤️ an, wie die Summe groß ist
+    of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
+      map(x => x * 10)
+    ).subscribe(console.log);
 
   }
 
