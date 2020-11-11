@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subscription, timer } from 'rxjs';
+import { of, Subject, Subscription, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -10,7 +11,7 @@ import { of, Subscription, timer } from 'rxjs';
 export class BookDetailsComponent implements OnInit, OnDestroy {
 
   isbn: string;
-  sub: Subscription;
+  private destroy$ = new Subject();
 
   constructor(private route: ActivatedRoute) { }
 
@@ -31,13 +32,15 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     // const observable = of('😀', '😎', '😈');
     const observable = timer(0, 100);
 
-    this.sub = observable.subscribe(observer);
+    observable.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(observer);
 
     // setTimeout(() => subscription.unsubscribe(), 5000);
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.destroy$.next();
   }
 
 
