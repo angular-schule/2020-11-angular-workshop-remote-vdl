@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, Subscription, timer } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -13,6 +13,10 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   isbn: string;
   private destroy$ = new Subject();
 
+  timer$ = timer(0, 100).pipe(
+    tap(console.log)
+  );
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,18 +27,18 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     //// ---- RxJS playground
 
     // building block: OBSERVER
-    const observer = {
-      next:  e => console.log(e),
-      error: err => console.log('ERROR', err),
-      complete: () => console.log('COMPLETE')
-    };
+    // const observer = {
+    //   next:  e => console.log(e),
+    //   error: err => console.log('ERROR', err),
+    //   complete: () => console.log('COMPLETE')
+    // };
 
-    // const observable = of('😀', '😎', '😈');
-    const observable = timer(0, 100);
+    // // const observable = of('😀', '😎', '😈');
+    // const observable = timer(0, 100);
 
-    observable.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(observer);
+    // observable.pipe(
+    //   takeUntil(this.destroy$)
+    // ).subscribe(observer);
 
     // setTimeout(() => subscription.unsubscribe(), 5000);
   }
