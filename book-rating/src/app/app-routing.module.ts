@@ -6,7 +6,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    // enableTracing: true,
+    scrollPositionRestoration: 'top' // when state management: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
