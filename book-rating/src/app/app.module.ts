@@ -10,6 +10,10 @@ import { BooksModule } from './books/books.module';
 
 import localeDe from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { registerLocaleData } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     // BooksModule, // removed because of lazy loading
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     // AppRoutingLastModule
   ],
   providers: [
