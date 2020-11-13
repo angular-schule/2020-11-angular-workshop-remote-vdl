@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, mergeMap, reduce, repeat, retry, share, switchMap } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, reduce, repeat, retry, share, shareReplay, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class BookDetailsComponent {
         description: err.message
       }))
     )),
-    share()
+    shareReplay(1)
   );
 
   constructor(private route: ActivatedRoute,
