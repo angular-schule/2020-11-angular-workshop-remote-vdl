@@ -22,8 +22,7 @@ export class BookDetailsComponent {
         title: 'Error',
         description: err.message
       }))
-    )),
-    shareReplay(1)
+    ))
   );
 
   constructor(private route: ActivatedRoute,

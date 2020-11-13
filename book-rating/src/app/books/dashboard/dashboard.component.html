@@ -1,5 +1,9 @@
 <!-- <br-my class="bg-success float-right"> -->
 
+LOCALE Test: {{ 1 | currency: 'EUR' }}
+
+<hr>
+
 <br-create-book
   (create)="addBook($event)"
 ></br-create-book>
@@ -14,3 +18,4 @@
 <!-- </br-my> -->
 
 Anzahl der Bücher: {{ books.length }}
+
