@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE translationbundle [
+<!ELEMENT translationbundle (translation)*>
+<!ATTLIST translationbundle lang CDATA #REQUIRED>
+
+<!ELEMENT translation (#PCDATA|ph)*>
+<!ATTLIST translation id CDATA #REQUIRED>
+<!ATTLIST translation desc CDATA #IMPLIED>
+<!ATTLIST translation meaning CDATA #IMPLIED>
+<!ATTLIST translation xml:space (default|preserve) "default">
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<translationbundle lang="en">
+  <translation id="BOOK_COUNT" desc="Please provide a short text only!" meaning="bookCount">Book Count:</translation>
+  <translation id="AppComponentTest">This text must be translated, too!</translation>
+  <translation id="AppComponentTitle">Book Rating !</translation>
+  <translation id="WelcomeMessage"> You can organize your books here! </translation>
+  <translation id="BookRating">🇬🇧Book Rating🇬🇧</translation>
+  <translation id="ErrorIsbnInvalid"> Error: Please enter a valid ISBN! </translation>
+  <translation id="ErrorIsbnRequired"> Please enter something. </translation>
+  <translation id="ErrorIsbnMinlength"> Please enter at least 3 characters. </translation>
+  <translation id="HelloWorld">Hallo World! :-)</translation>
+</translationbundle>

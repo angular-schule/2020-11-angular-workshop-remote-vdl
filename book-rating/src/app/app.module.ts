@@ -25,7 +25,7 @@ import { registerLocaleData } from '@angular/common';
     // AppRoutingLastModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'de' }
+    //{ provide: LOCALE_ID, useValue: 'de' }
   ],
   bootstrap: [AppComponent]
 })
