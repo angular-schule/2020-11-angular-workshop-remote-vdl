@@ -9,13 +9,15 @@ LOCALE Test: {{ 1 | currency: 'EUR' }}
 ></br-create-book>
 
 <br-book
-  *ngFor="let b of books"
+  *ngFor="let b of books$ | async"
   (rateDown)="doRateDown($event)"
   (rateUp)="doRateUp($event)"
   [book]="b">
 </br-book>
 
-<!-- </br-my> -->
+<h3 *ngIf="loading$ | async">
+  Lade Bücher...
+</h3>
 
-Anzahl der Bücher: {{ books.length }}
+Anzahl der Bücher: {{ (books$ | async).length }}
 

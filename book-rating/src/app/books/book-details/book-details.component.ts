@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, mergeMap, reduce, repeat, retry, share, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, concatMap, filter, map, mergeMap, reduce, repeat, retry, share, shareReplay, switchMap, withLatestFrom } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
+import { selectBookViaIsbn } from '../store/book.selectors';
 
 @Component({
   selector: 'br-book-details',
@@ -25,6 +27,15 @@ export class BookDetailsComponent {
     ))
   );
 
+  // TODO Johannes
+  // book$ = this.route.paramMap.pipe(
+  //   map(paraMap => paraMap.get('isbn')),
+  //   // map(([isbn, state]) => select()
+  //   concatMap(isbn => withLatestFrom(() =>
+  //     this.store.pipe(select(selectBookViaIsbn, isbn))
+  //   ))
+  // );
+
   constructor(private route: ActivatedRoute,
-              private bs: BookStoreService) { }
+              private store: Store) { }
 }
